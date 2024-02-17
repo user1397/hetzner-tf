@@ -29,6 +29,9 @@ mkdir -p /home/$SUDO_USER/.ssh
 mv /root/.ssh/authorized_keys /home/$SUDO_USER/.ssh/
 chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER/.ssh
 
+# add user to docker group
+usermod -aG docker $SUDO_USER
+
 # Secure sshd config and restart sshd
 sed -i "s/#Port 22/Port ${SSH_PORT}/g" /etc/ssh/sshd_config
 sed -i "s/PermitRootLogin yes/PermitRootLogin no/g" /etc/ssh/sshd_config
