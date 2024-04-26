@@ -52,32 +52,10 @@ resource "hcloud_firewall" "myfirewall" {
     protocol  = "icmp"
     source_ips = [ "${data.http.my_ip.response_body}/32" ]
   }
-
   rule {
     direction = "in"
     protocol  = "tcp"
     port      = var.ssh_port
     source_ips = [ "${data.http.my_ip.response_body}/32" ]
   }
-
-  rule {
-    direction = "out"
-    protocol  = "tcp"
-    port      = "any"
-    destination_ips = [ "0.0.0.0/0" ]
-  }
-
-  rule {
-    direction = "out"
-    protocol  = "udp"
-    port      = "any"
-    destination_ips = [ "0.0.0.0/0" ]
-  }
-
-  rule {
-    direction = "out"
-    protocol  = "icmp"
-    destination_ips = [ "0.0.0.0/0" ]
-  }
-
 }

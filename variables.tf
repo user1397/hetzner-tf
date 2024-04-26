@@ -20,7 +20,7 @@ variable "server_type" {
 
 variable "server_image" {
   type    = string
-  default = "ubuntu-22.04"
+  default = "debian-12"
 }
 
 variable "ssh_key_name" {
