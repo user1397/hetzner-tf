@@ -34,7 +34,7 @@ usermod -aG docker $SUDO_USER
 
 # Secure sshd config and restart sshd
 sed -i "s/#Port 22/Port ${SSH_PORT}/g" /etc/ssh/sshd_config
-sed -i "s/#PermitRootLogin prohibit-password/PermitRootLogin no/g" /etc/ssh/sshd_config
+sed -i "s/PermitRootLogin prohibit-password/PermitRootLogin no/g" /etc/ssh/sshd_config
 sed -i "s/#PasswordAuthentication yes/PasswordAuthentication no/g" /etc/ssh/sshd_config
 sed -i "s/X11Forwarding yes/X11Forwarding no/g" /etc/ssh/sshd_config
 systemctl restart sshd
